@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using LH_PET_WEB.Data;
+using LH_PET_WEB.Models;
 
 namespace LH_PET_WEB.Controllers
 {

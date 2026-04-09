@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace LH_PET_WEB.Models
+{
+    [Table("tb_configuracao_clinica")]
+    public class ConfiguracaoClinica
+    {
+        [Key]
+        [Column("pk_configuracao")]
+        public int Id { get; set; }
+
+        [Required(ErrorMessage = "O horario de abertura é obrigatorio.")]
+        [Column("tm_abertura")]
+        public TimeSpan HoraAbertura { get; set; }
+
+        [Required(ErrorMessage = "O horario de fechamento é obrigatorio")]
+        [Column("tm_fechamneto")]
+        public TimeSpan HoraFechamento { get; set; }
+
+        [Column("ds_dias_trabalho")]
+        public string DiasTrabalho { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "O tempo da consulta é obrigatorio.")]
+        [Column("vl_minutos_consulta")]
+        public int MinutosConsulta { get; set; }
+
+        [Required(ErrorMessage = "O tempo de tosa é obrigatorio.")]
+        [Column("vl_minutos_tosa")]
+        public int MinutosTosa { get; set; }
+    }
+}
