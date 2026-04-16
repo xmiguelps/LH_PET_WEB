@@ -59,9 +59,9 @@ namespace LH_PET_WEB.Controllers
 
                 foreach (var item in request.Itens)
                 {
-                    var produtoBanco = await _contexto.Produtos.FindAsync(item.ProdutoId);
+                    var produtoBanco = await _contexto.Produtos.FindAsync(item.Produtoid);
 
-                    if(produtoBanco == null) throw new Exception($"Produto ID {item.ProdutoId} não encontrado.");
+                    if(produtoBanco == null) throw new Exception($"Produto ID {item.Produtoid} não encontrado.");
                     if(produtoBanco.Estoque < item.Quantidade) throw new Exception($"Estoque insuficiente para {produtoBanco.Nome}.Restam apenas {produtoBanco.Estoque}.");
 
                     produtoBanco.Estoque -= item.Quantidade;
@@ -70,13 +70,13 @@ namespace LH_PET_WEB.Controllers
                     var novoItem = new ItemVenda
                     {
                         VendaId = novaVenda.Id,
-                        ProdutoId = item.ProdutoId,
+                        ProdutoId = item.Produtoid,
                         Quantidade = item.Quantidade,
                         PrecoUnitario = produtoBanco.Preco
                     };
 
                     totalVenda += (item.Quantidade * produtoBanco.Preco);
-                    _contexto.ItensVendas.Add(novoItem);
+                    _contexto.ItensVenda.Add(novoItem);
                 }
 
                 novaVenda.Total = totalVenda;
@@ -97,7 +97,7 @@ namespace LH_PET_WEB.Controllers
         [HttpGet]
         public async Task<IActionResult> Historico() 
         {
-            var vendas = await contexto.Vendas
+            var vendas = await _contexto.Vendas
                 .Include(v => v.Usuario)
                 .OrderByDescending(v => v.DataVenda)
                 .ToListAsync();
