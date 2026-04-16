@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\OneDrive\\Documentos\\SENAI\\C#\\LH_PET_WEB\\LH_PET_WEB.csproj": {}
+    "C:\\Users\\ead\\Documents\\miguel-passos\\Back-end\\C#\\LH_PET_WEB\\LH_PET_WEB.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\OneDrive\\Documentos\\SENAI\\C#\\LH_PET_WEB\\LH_PET_WEB.csproj": {
+    "C:\\Users\\ead\\Documents\\miguel-passos\\Back-end\\C#\\LH_PET_WEB\\LH_PET_WEB.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\OneDrive\\Documentos\\SENAI\\C#\\LH_PET_WEB\\LH_PET_WEB.csproj",
+        "projectUniqueName": "C:\\Users\\ead\\Documents\\miguel-passos\\Back-end\\C#\\LH_PET_WEB\\LH_PET_WEB.csproj",
         "projectName": "LH_PET_WEB",
-        "projectPath": "C:\\Users\\User\\OneDrive\\Documentos\\SENAI\\C#\\LH_PET_WEB\\LH_PET_WEB.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\OneDrive\\Documentos\\SENAI\\C#\\LH_PET_WEB\\obj\\",
+        "projectPath": "C:\\Users\\ead\\Documents\\miguel-passos\\Back-end\\C#\\LH_PET_WEB\\LH_PET_WEB.csproj",
+        "packagesPath": "C:\\Users\\ead\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ead\\Documents\\miguel-passos\\Back-end\\C#\\LH_PET_WEB\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\ead\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -38,7 +38,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "10.0.200"
       },
       "frameworks": {
         "net9.0": {
@@ -48,11 +48,10 @@
               "target": "Package",
               "version": "[4.1.0, )"
             },
-<<<<<<< HEAD
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[8.0.0, )"
-=======
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[9.0.*, )"
@@ -62,7 +61,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[9.0.*, )"
->>>>>>> 4844c04497b6c5885d54cd7ff4a66c37eed55681
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[10.0.6, )"
             },
             "Microsoft.IdentityModel.Tokens": {
               "target": "Package",
@@ -87,19 +89,19 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[9.0.13, 9.0.13]"
+              "version": "[9.0.15, 9.0.15]"
             },
             {
               "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[9.0.13, 9.0.13]"
+              "version": "[9.0.15, 9.0.15]"
             },
             {
               "name": "Microsoft.NETCore.App.Ref",
-              "version": "[9.0.13, 9.0.13]"
+              "version": "[9.0.15, 9.0.15]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[9.0.13, 9.0.13]"
+              "version": "[9.0.15, 9.0.15]"
             }
           ],
           "frameworkReferences": {
@@ -110,7 +112,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -13,11 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LH_PET_WEB")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< HEAD
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5cee90f84aee8117bc2a9d4d88d89fc4a443eda7")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5d2a41d3b2b42e5b4b9e10171293bc8fc4eaabfa")]
->>>>>>> 4844c04497b6c5885d54cd7ff4a66c37eed55681
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2ef7b40376b76a3cef165bfc05a25d2a26e382de")]
 [assembly: System.Reflection.AssemblyProductAttribute("LH_PET_WEB")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LH_PET_WEB")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
