@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using LH_PET_WEB.Data;
 using LH_PET_WEB.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace LH_PET_WEB.Controllers
 {
@@ -21,7 +22,7 @@ namespace LH_PET_WEB.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var config = await _contexto.Configuracoes.FirstOrDefualtAsync(e => e.Id == 1);
+            var config = await _contexto.Configuracoes.FirstOrDefaultAsync(e => e.Id == 1);
 
             if(config == null)
             {
@@ -41,7 +42,7 @@ namespace LH_PET_WEB.Controllers
 
             if(ModelState.IsValid)
             {
-                var configExistente = await _contexto.Configuracoes.FirstOrDefualtAsync(e => e.Id == 1);
+                var configExistente = await _contexto.Configuracoes.FirstOrDefaultAsync(e => e.Id == 1);
                 
                 if(configExistente != null)
                 {

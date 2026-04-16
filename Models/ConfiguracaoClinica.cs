@@ -25,6 +25,10 @@ namespace LH_PET_WEB.Models
         [Column("ds_dias_trabalho")]
         public string DiasTrabalho { get; set; } = string.Empty;
 
+        [Required(ErrorMessage = "O tempo do banho é obrigatorio.")]
+        [Column("vl_minutos_banho")]
+        public int MinutosBanho { get; set;}
+
         [Required(ErrorMessage = "O tempo da consulta é obrigatorio.")]
         [Column("vl_minutos_consulta")]
         public int MinutosConsulta { get; set; }

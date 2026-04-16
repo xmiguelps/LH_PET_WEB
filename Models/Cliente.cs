@@ -28,9 +28,16 @@ namespace LH_PET_WEB.Models
         [Column("cd_cpf")]
         public string Cpf { get; set; } = string.Empty;
 
+        [Required(ErrorMessage = "O Telefone é obrigatorio.")]
+        [MaxLength(20)]
+        [Column("cd_telefone")]
+        public string Telefone { get; set; } = string.Empty;
+
         [ForeignKey("UsuarioId")]
         public Usuario? Usuario { get; set; }
 
         public ICollection<Pet> Pets { get; set; } = new List<Pet>();
+
+
     }
 }

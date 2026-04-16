@@ -31,6 +31,10 @@ namespace LH_PET_WEB.Models.ViewModels
         [Required(ErrorMessage = "A Senha é obrigatoria.")]
         [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$", ErrorMessage = "A senha é muito fraca.")]
         public string Senha { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "O E-mail é obrigatorio.")]
+        [EmailAddress(ErrorMessage = "Formato de e-mail invalido")]
+        public string Email { get; set; } = string.Empty;
     }
 
     public class ApiPetDTO

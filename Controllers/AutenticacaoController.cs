@@ -11,10 +11,10 @@ namespace LH_PET_WEB.Controllers
 {
     public class AutenticacaoController : Controller
     {
-        private readonly ContextBanco _contexto;
-        private readonly IProblemDetailsService _emailService;
+        private readonly ContextoBanco _contexto;
+        private readonly IEmailService _emailService;
 
-        public AutenticacaoController(ContextoBanco contexto, IProblemDetailsService emailService)
+        public AutenticacaoController(ContextoBanco contexto, IEmailService emailService)
         {
             _contexto = contexto;
             _emailService = emailService;
@@ -33,7 +33,7 @@ namespace LH_PET_WEB.Controllers
         {
             if(!ModelState.IsValid) return View(model);
 
-            var usuario = await _contexto.Usuarios.FirstOrDefualtAsync(uint => uint.Email == model.Email);
+            var usuario = await _contexto.Usuarios.FirstOrDefaultAsync(u => u.Email == model.Email);
 
             if(usuario == null || !BCrypt.Net.BCrypt.Verify(model.Senha, usuario.SenhaHash))
             {
@@ -52,9 +52,9 @@ namespace LH_PET_WEB.Controllers
                 TempData["ResetUsuarioId"] = usuario.Id;
                 TempData["AvisoTemporario"] = "Sua senha é temporaria. Porfavor, defina uma nova senha segura para continuar";
                 return RedirectToAction(nameof(RedefinirSenha));
-                await FazerLoginNoCookie(usuario.Id, usuario.Nome, usuario.Email, usuario.Perfil);
-                return RedirectToAction("Index", "Painel");
             }
+            await FazerLoginNoCookie(usuario.Id, usuario.Nome, usuario.Email, usuario.Perfil);
+            return RedirectToAction("Index", "Painel");
 
         }
 
@@ -100,7 +100,7 @@ namespace LH_PET_WEB.Controllers
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.NameIdentifier.id.ToString()),
+                new Claim(ClaimTypes.NameIdentifier, id.ToString()),
                 new Claim(ClaimTypes.Name, nome ??"Usuario"),
                 new Claim(ClaimTypes.Email, email),
                 new Claim(ClaimTypes.Role, perfil)
@@ -122,7 +122,7 @@ namespace LH_PET_WEB.Controllers
         [HttpGet]
         public IActionResult EsqueciSenha()
         {
-            return View(new EsquiciSenhaViewModel());
+            return View(new EsqueciSenhaViewModel());
         }
 
         [HttpPost]
@@ -131,12 +131,12 @@ namespace LH_PET_WEB.Controllers
         {
             if(!ModelState.IsValid) return View(model);
 
-            var usuario = await ContextBoundObject.Usuarios.FirstOrDefualtAsync(u => u.Email == model.Email);
+            var usuario = await _contexto.Usuarios.FirstOrDefaultAsync(u => u.Email == model.Email);
             
             if(usuario != null)
             {
                 string senhaTemporaria = Guid.NewGuid().ToString().Substring(0, 8);
-                usuario.SenhaHash = BCrypt.Net.BCrypt.HashPassword(SenhaTemporaria);
+                usuario.SenhaHash = BCrypt.Net.BCrypt.HashPassword(senhaTemporaria);
                 usuario.SenhaTemporaria = true;
 
                 _contexto.Usuarios.Update(usuario);

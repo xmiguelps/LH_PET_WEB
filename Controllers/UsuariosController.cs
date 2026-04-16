@@ -8,7 +8,7 @@ using LH_PET_WEB.Services;
 
 namespace LH_PET_WEB.Controllers
 {
-    [Authorize(Roles = = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class UsuariosController : Controller
     {
         private readonly ContextoBanco _contexto;

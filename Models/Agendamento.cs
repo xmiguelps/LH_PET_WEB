@@ -27,6 +27,11 @@ namespace LH_PET_WEB.Models
         [Column("ds_status")]
         public string Status { get; set; } = "Pendente";
 
+        [Required(ErrorMessage = "O Tipo de serciço é obrigatorio.")]
+        [MaxLength(100)]
+        [Column("ds_tipo")]
+        public string Tipo { get; set; } = string.Empty;
+
         [ForeignKey("PetId")]
         public Pet? Pet {get; set;}
 

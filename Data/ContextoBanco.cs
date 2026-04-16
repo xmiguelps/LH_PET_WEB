@@ -1,7 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using LH_PET_WEB.Models;
-using Microsoft.AspNetCore.Http.Features;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace LH_PET_WEB.Data
 {
@@ -9,7 +7,7 @@ namespace LH_PET_WEB.Data
     {
         public ContextoBanco(DbContextOptions<ContextoBanco> options) : base(options) { }
 
-        public DbSet<Usuario> Usuario { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
 
         public DbSet<Pet> Pets { get; set; }
@@ -22,13 +20,13 @@ namespace LH_PET_WEB.Data
 
         public DbSet<Atendimento> Atendimentos { get; set; }
 
-        public DbSet<ConfiguracaoClinica> Configuracaos { get; set; }
+        public DbSet<ConfiguracaoClinica> Configuracoes { get; set; }
 
         public DbSet<Venda> Vendas { get; set; }
 
-        public DbSet<itemVenda> ItensVenda { get; set; }
+        public DbSet<ItemVenda> ItensVenda { get; set; }
 
-        protected override void OModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 

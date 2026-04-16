@@ -28,13 +28,6 @@ namespace LH_PET_WEB.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
-        {
-            var produtos = await _contexto.Produtos.OrderBy(p => p.Nome).ToListAsync();
-            return View(produtos);
-        }
-
-        [HttpGet]
         public IActionResult Criar()
         {
             return View();
@@ -115,7 +108,7 @@ namespace LH_PET_WEB.Controllers
 
                         if(!string.IsNullOrEmpty(model.ImagemUrl))
                         {
-                            string caminhoAntigo = Path.Combine(_hostEnvironment.WebRootPath.model.ImagemUrl.TrimStart('/'));
+                            string caminhoAntigo = Path.Combine(_hostEnvironment.WebRootPath, model.ImagemUrl.TrimStart('/'));
                             if (System.IO.File.Exists(caminhoAntigo))System.IO.File.Delete(caminhoAntigo);
                         }
                         model.ImagemUrl="/uploads/produtos" + nomeArquivoUnico;
@@ -134,7 +127,7 @@ namespace LH_PET_WEB.Controllers
                     if(!ProdutoExists(model.Id)) return NotFound();
                     else throw;
                 }
-                return RedirectToAction(nameof(index));
+                return RedirectToAction(nameof(Index));
             }
             return View(model);
         }
@@ -144,7 +137,7 @@ namespace LH_PET_WEB.Controllers
         public async Task<IActionResult> Excluir(int id)
         {
             var produto = await _contexto.Produtos.FindAsync(id);
-            if(produtos != null)
+            if(produto != null)
             {
                 if (!string.IsNullOrEmpty(produto.ImagemUrl))
                 {

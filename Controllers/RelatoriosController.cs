@@ -25,7 +25,7 @@ namespace LH_PET_WEB.Controllers
             var hoje = DateTime.Today;
             var inicioDoMes = new DateTime(hoje.Year, hoje.Month, 1);
 
-            var vendasMes = await _contexto.vendasMes
+            var vendasMes = await _contexto.Vendas
                 .Where(v => v.DataVenda >= inicioDoMes)
                 .ToListAsync();
             
@@ -35,7 +35,7 @@ namespace LH_PET_WEB.Controllers
 
             var faturamentoPagamento = vendasMes
                 .GroupBy(v => v.FormaPagamento)
-                .ToDietionary(g => g.Key, g => g.Sum(v => v.Total));
+                .ToDictionary(g => g.Key, g => g.Sum(v => v.Total));
             
             var topProdutos = await _contexto.ItensVenda
                 .Include(i => i.Produto)
@@ -45,10 +45,10 @@ namespace LH_PET_WEB.Controllers
                 .Select(g => new TopProdutoViewModel
                 {
                     NomeProduto = g.Key.Nome,
-                    QuantidadeVendida = g.Sum(i => i.Quantidade).
+                    QuantidadeVendida = g.Sum(i => i.Quantidade),
                     ValorTotalGerado = g.Sum(i => i.Quantidade * i.PrecoUnitario)
                 })
-                .OrderByDescending(p => p.QauntidadeVendida)
+                .OrderByDescending(p => p.QuantidadeVendida)
                 .Take(5)
                 .ToListAsync();
 
@@ -58,7 +58,7 @@ namespace LH_PET_WEB.Controllers
                 FaturamentoMes = vendasMes.Sum(v => v.Total),
                 QuantidadeVendasMes = vendasMes.Count,
                 FaturamentoPorPagamento = faturamentoPagamento,
-                ProdutoMaisVendidos = topProdutos
+                ProdutosMaisVendidos = topProdutos
             };
 
             return View(viewModel);

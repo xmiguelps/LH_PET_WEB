@@ -31,9 +31,10 @@ namespace LH_PET_WEB.Models
         [Column("ds_raca")]
         public string Raca { get; set; } = string.Empty;
 
+
         [Required]
         [Column("dt_nascimento")]
-        public DateTime DateNascimento { get; set; }
+        public DateTime DataNascimento { get; set; }
 
         [NotMapped]
         public int IdadeCalculada

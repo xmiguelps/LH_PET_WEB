@@ -13,7 +13,7 @@ namespace LH_PET_WEB.Models.ViewModels
 
         public List<TopProdutoViewModel> ProdutosMaisVendidos { get; set; } = new List<TopProdutoViewModel>();
 
-        public Dictionary<string, decimal> faturamentoPorPagamento { get; set; } = new Dictionary<string, decimal>();
+        public Dictionary<string, decimal> FaturamentoPorPagamento { get; set; } = new Dictionary<string, decimal>();
     }
 
     public class TopProdutoViewModel
